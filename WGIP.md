@@ -114,7 +114,7 @@ The heuristic function will be a combination of the methods mentioned before. Fo
 A combination of **keyword extractions** and **semantic similarity**.
 
 ### Keyword Extractions
-The **keyword extractions** would consist of taking out the *stopwords* which are English words like "the", "is", "in", etc. to keep the more unique informative words in the text. Then, the leftover words would be tokenized and stored into a hashmap/dictionary mapping an ID to the word. The frequency of each word would be collected and stored to show which words were the most frequent. To add another layer of complexity, we can create a TF-IDF model from the corpus which would assign a score to each word in the text that represents the relevance of the word to the whole body of text relative to all other documents in the corpus. The keywords would be the highest scored words.
+The **keyword extractions** would consist of taking out the *stopwords* which are English words like "the", "is", "in", etc. to keep the more unique informative words in the text. Then, the leftover words would be tokenized and stored into a hashmap/dictionary mapping an ID to the word. The frequency of each word would be collected and stored to show which words were the most frequent. To add another layer of complexity, we can create a TF-IDF model from the text which would assign a score to each word in the text that represents the relevance of the word to the whole body of text relative to all of the other text. The keywords would be the highest scored words.
 
 Below is some pseudo-code for the stopwords and gathering word frequencies.
 
@@ -177,6 +177,8 @@ for i, doc in enumerate(X.toarray()):
 
 ### Semantic Similarity
 A popular way to use semantic similarity is using **word embeddings** which creates vector representation of words where words similar in meaning will have similar vector representations. A popular model to do so is *Word2Vec*. However, there are others like *GloVe* and *FastText*. We can also use **cosine similarity** which is done using a *BERT model*. This works by using a tokenizer that converts the sentences into a format that the BERT model can understand. The tokenizer tokenizes the sentences and gets the embeddings for each of the sentences where sentences with similar meaning will have similar vector representations instead of words now. Then, the mean embedding is calculated for the sentences and then we are able to derive the cosine similarity between the mean embeddings. The cosine similarity is a measure of the cosine of the angle between the two vectors and is a common measure of similarity in high-dimensional space.
+
+Below is some pseudo-code
 
 ### Other Options
 Other options such as *Name Entity Recognition (NER)* and *Semantic Analysis* exist and can be incorporated. But, *Keyword Extractions* and *Semantic Similarity* at the ideas so far.
