@@ -1,4 +1,7 @@
 # Project 3: Wikipedia Game Improvement Proposal
+Author: Michelle Zhang
+Email: mizhang@chapman.edu
+Course: CPSC 406-01 Algorithm Analysis
 
 ## Question
 Use *Aider* to study the breadth-first search (BFS) algorithm of the *Wikipedia Game*. Propose an improvement on the Wikipedia Game. Give a high-level description of your improvement. Also provide a pseudo-code description. If you need special libraries (such as word embeddings) say what you are planning to use.
@@ -106,6 +109,9 @@ def find_path(start_page, finish_page):
 During the preprocessing stage, it would be helpful to preprocess the content of the start and finish pages and extract the keywords, compute the semantic vectors, and analyze links. This information will then be stored in the heuristic function for later use. Some methods that can be used are $Word2Vec$ or $Doc2Vec$ for semantic meaning. The priority queue will be a heap that minimizes the cost calculated by the heuristic function. The main part of the algorithm is a huge while loop that will keep going as long as the queue is not empty and the time limit has not been exceeded. Each iteration of the loop involves dequeuing from the priority queue to retrieve the page with the lowest estimated cost from the finish page and then storing those page's links into the queue. The algorithm will check to see if the final page is reached or if it isn't, it will return $None$ to show that there was no path or that the time limit exceeded.
 
 The heuristic function will be a combination of the methods mentioned before. For instance, the relevance can be computed based on common keywords, semantic similarity, and link analysis. Then, this number will be normalized so it can be compared with the other scores in the priority queue.
+
+## Heuristic Function
+
 
 ## Benefits and Costs
 A huge benefit is that the algorithm is *more efficient and optimal* than the initial BFS algorithm. The heuristic function will use many combined methods to efficiently find the shortest path by prioritizing pages that are more similar and closely related to the finish page instead of simply searching through all links in a page without factoring in relevance. However, a cost is that this *increases the complexity and expensiveness* of the algorithm severely. The heuristic function can get quite complex to actually be effective. Additionally, there are a lot more computational resources needed to achieve such high efficiency and complexity. There are many *challenges with building a good heuristic function* as well. This requires a lot of testing and experimenting. The heuristic function fetches all of the content of both the start page and finish page. This can slow down the search time and not be as effective as the BFS if the path to the pages are close to begin with. Lastly, *more memory is consumed* with this algorithm because in the worst case, all of the possible links from every page in the path can be stored in the priority queue. Overall, although we want to achieve greater efficiency and complexity in the search algorithm, it is important to acknowledge the costs that come with them. It is constantly a struggle to balance the two in programming.
