@@ -110,7 +110,7 @@ During the preprocessing stage, it would be helpful to preprocess the content of
 
 The heuristic function will be a combination of the methods mentioned before. For instance, the relevance can be computed based on common keywords, semantic similarity, and link analysis. Then, this number will be normalized so it can be compared with the other scores in the priority queue.
 
-## Heuristic Function
+## Heuristic Function Description
 A combination of **keyword extractions** and **semantic similarity**.
 
 ### Keyword Extractions
@@ -178,7 +178,66 @@ for i, doc in enumerate(X.toarray()):
 ### Semantic Similarity
 A popular way to use semantic similarity is using **word embeddings** which creates vector representation of words where words similar in meaning will have similar vector representations. A popular model to do so is *Word2Vec*. However, there are others like *GloVe* and *FastText*. We can also use **cosine similarity** which is done using a *BERT model*. This works by using a tokenizer that converts the sentences into a format that the BERT model can understand. The tokenizer tokenizes the sentences and gets the embeddings for each of the sentences where sentences with similar meaning will have similar vector representations instead of words now. Then, the mean embedding is calculated for the sentences and then we are able to derive the cosine similarity between the mean embeddings. The cosine similarity is a measure of the cosine of the angle between the two vectors and is a common measure of similarity in high-dimensional space.
 
-Below is some pseudo-code
+Below is some pseudo-code for word embeddings:
+
+```
+# Import necessary libraries
+import gensim
+from gensim.models import Word2Vec
+from nltk.tokenize import sent_tokenize, word_tokenize
+
+# Define your corpus
+corpus = "Your text data"
+
+# Preprocess the corpus
+sentences = sent_tokenize(corpus)
+sentences = [word_tokenize(sentence) for sentence in sentences]
+
+# Initialize the Word2Vec model
+# Parameters: vector size, window size, min count, training method
+model = Word2Vec(size=100, window=5, min_count=1, sg=1)
+
+# Build the vocabulary
+model.build_vocab(sentences)
+
+# Train the model
+model.train(sentences, total_examples=model.corpus_count, epochs=model.epochs)
+
+# Save the model
+model.save("word2vec.model")
+
+# Load the model
+model = Word2Vec.load("word2vec.model")
+
+# Get vector for a word
+vector = model.wv['your-word']
+
+# Find similar words
+similar_words = model.wv.most_similar('your-word')
+```
+
+Below is pseudocode for cosine similarity.
+
+```
+# Import necessary libraries
+import wikipedia
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Define your Wikipedia articles
+article1 = wikipedia.page("Article1").content
+article2 = wikipedia.page("Article2").content
+
+# Convert the articles into TF-IDF vectors
+vectorizer = TfidfVectorizer()
+tfidf_matrix = vectorizer.fit_transform([article1, article2])
+
+# Calculate cosine similarity
+cos_sim = cosine_similarity(tfidf_matrix[0:1], tfidf_matrix[1:2])
+
+# Print cosine similarity
+print(cos_sim)
+```
 
 ### Other Options
 Other options such as *Name Entity Recognition (NER)* and *Semantic Analysis* exist and can be incorporated. But, *Keyword Extractions* and *Semantic Similarity* at the ideas so far.
