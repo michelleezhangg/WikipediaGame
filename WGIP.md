@@ -116,6 +116,65 @@ A combination of **keyword extractions** and **semantic similarity**.
 ### Keyword Extractions
 The **keyword extractions** would consist of taking out the *stopwords* which are English words like "the", "is", "in", etc. to keep the more unique informative words in the text. Then, the leftover words would be tokenized and stored into a hashmap/dictionary mapping an ID to the word. The frequency of each word would be collected and stored to show which words were the most frequent. To add another layer of complexity, we can create a TF-IDF model from the corpus which would assign a score to each word in the text that represents the relevance of the word to the whole body of text relative to all other documents in the corpus. The keywords would be the highest scored words.
 
+Below is some pseudo-code for the stopwords and gathering word frequencies.
+
+```
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize 
+from collections import Counter
+
+# Download the set of stop words the first time
+nltk.download('punkt')
+nltk.download('stopwords')
+
+text = "This is a sample text for keyword extraction. It contains several words, some of which are more important than others."
+
+stop_words = set(stopwords.words('english')) 
+
+word_tokens = word_tokenize(text)
+
+filtered_text = [word for word in word_tokens if word.casefold() not in stop_words]
+
+word_freq = Counter(filtered_text)
+
+keywords = word_freq.most_common(5)
+
+print(keywords)
+```
+
+Below is the pseudo-code for the TF-IDF model.
+
+```
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Sample documents
+documents = [
+    'This is the first document.',
+    'This document is the second document.',
+    'And this is the third one.',
+    'Is this the first document?'
+]
+
+# Create an instance of TfidfVectorizer
+vectorizer = TfidfVectorizer()
+
+# Learn the vocabulary and idf, return document-term matrix.
+X = vectorizer.fit_transform(documents)
+
+# Get feature names
+feature_names = vectorizer.get_feature_names_out()
+
+# Print the keywords for each document
+for i, doc in enumerate(X.toarray()):
+    tfidf_scores = list(zip(feature_names, doc))
+    sorted_scores = sorted(tfidf_scores, key=lambda x: x[1], reverse=True)
+    top_5_words = sorted_scores[:5]
+    print(f"Top words in document {i+1}")
+    for word, score in top_5_words:
+        print(f"\tWord: {word}, TF-IDF: {score}")
+```
+
 ### Semantic Similarity
 A popular way to use semantic similarity is using **word embeddings** which creates vector representation of words where words similar in meaning will have similar vector representations. A popular model to do so is *Word2Vec*. However, there are others like *GloVe* and *FastText*. We can also use **cosine similarity** which is done using a *BERT model*. This works by using a tokenizer that converts the sentences into a format that the BERT model can understand. The tokenizer tokenizes the sentences and gets the embeddings for each of the sentences where sentences with similar meaning will have similar vector representations instead of words now. Then, the mean embedding is calculated for the sentences and then we are able to derive the cosine similarity between the mean embeddings. The cosine similarity is a measure of the cosine of the angle between the two vectors and is a common measure of similarity in high-dimensional space.
 
