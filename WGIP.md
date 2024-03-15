@@ -1,7 +1,7 @@
 # Project 3: Wikipedia Game Improvement Proposal
-Author: Michelle Zhang
-Email: mizhang@chapman.edu
-Course: CPSC 406-01 Algorithm Analysis
+- Author: Michelle Zhang
+- Email: mizhang@chapman.edu
+- Course: CPSC 406-01 Algorithm Analysis
 
 ## Question
 Use *Aider* to study the breadth-first search (BFS) algorithm of the *Wikipedia Game*. Propose an improvement on the Wikipedia Game. Give a high-level description of your improvement. Also provide a pseudo-code description. If you need special libraries (such as word embeddings) say what you are planning to use.
