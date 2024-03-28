@@ -1,4 +1,4 @@
-# Project 3: Wikipedia Game Improvement Proposal
+# Wikipedia Game Improvement Proposal
 - Author: Michelle Zhang
 - Email: mizhang@chapman.edu
 - Course: CPSC 406-01 Algorithm Analysis
@@ -244,3 +244,14 @@ Other options such as *Name Entity Recognition (NER)* and *Semantic Analysis* ex
 
 ## Benefits and Costs
 A huge benefit is that the algorithm is *more efficient and optimal* than the initial BFS algorithm. The heuristic function will use many combined methods to efficiently find the shortest path by prioritizing pages that are more similar and closely related to the finish page instead of simply searching through all links in a page without factoring in relevance. However, a cost is that this *increases the complexity and expensiveness* of the algorithm severely. The heuristic function can get quite complex to actually be effective. Additionally, there are a lot more computational resources needed to achieve such high efficiency and complexity. There are many *challenges with building a good heuristic function* as well. This requires a lot of testing and experimenting. The heuristic function fetches all of the content of both the start page and finish page. This can slow down the search time and not be as effective as the BFS if the path to the pages are close to begin with. Lastly, *more memory is consumed* with this algorithm because in the worst case, all of the possible links from every page in the path can be stored in the priority queue. Overall, although we want to achieve greater efficiency and complexity in the search algorithm, it is important to acknowledge the costs that come with them. It is constantly a struggle to balance the two in programming.
+
+## Project Milestones
+| Milestone | Notes | Time Required | Current Status | Finished |
+|-----------|------------| ---------------|----------------|----------|
+| Project Setup and Environment Preparation | Set up the development environment with the necessary tools and languages. Identify libraries needed and dependencies needed for the project.  | 3 days | Not Started | No |
+| Understand A* Search Algorithm and the original BFS Implementation | Build a basic A* Search Algorithm and identify places to add the heuristic function along with keyword extraction and semantic similarity. Learn how to fetch page content, extract links, and other necessary operations from the original BFS implementation and way to optimize and improve it. | 3 days | Not Started | No |
+| Keyword Extraction | Research and choose potential or multiple keyword extraction technique. Potential techniques: TF-IDF, TextRank, spaCy. | 1 week | Not Started | No |
+| Semantic Similarity Calculation | Research and choose potential or multiple methods of calculating semantic similarity. Potential: Word2Vec, GloVe. | 1 week | Not Started | No |
+| Heuristic Function Design | Design the heuristic function using the methods chosen for keyword extraction and semantic similarity to estimate the cost of reaching the target page from each given page. Test the function to make sure it makes sense. This may also involve adjusting the keyword extraction and semantic similarity techniques. | 1 week | Not Started | No |
+| Integration and Testing | Integrate everything together to complete the A* Search Algorithm with the heuristic function and test it throughout. | 2 weeks | Not Started | No |
+| Optimization and Refinement | Identify bottlenecks and optimize the code for efficiency. There are many methods such as caching, parallelization, and algorithmic improvements. | 1 week | Not Started | No |
