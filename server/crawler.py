@@ -25,7 +25,7 @@ def find_path(start_page, finish_page):
     # breadth first search
     start_time = time.time()
     elapsed_time = time.time() - start_time
-    while queue and elapsed_time < TIMEOUT:  
+    while queue and elapsed_time < TIMEOUT:
         (vertex, path, depth) = queue.pop(0)
         for next in set(get_links(vertex)) - discovered:
             if next == finish_page:

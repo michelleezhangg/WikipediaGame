@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify, send_from_directory, Response
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-import crawler
+# import crawler
+import crawler2
 
 RATE_LIMIT = "5/minute"  # requests per minute and IP address
 
@@ -21,13 +22,16 @@ def find_path():
         start_page = data['start']
         finish_page = data['finish']
 
-        path, logs, time, discovered = crawler.find_path(start_page, finish_page)
+        # path, logs, time, discovered = crawler.find_path(start_page, finish_page)
+        path, logs, time, discovered = crawler2.find_path(start_page, finish_page)
 
         elapsed_time = logs[-1]
+        # response = jsonify({'path': path, 'logs': logs, 'time': time, 'discovered': discovered})
         response = jsonify({'path': path, 'logs': logs, 'time': time, 'discovered': discovered})
         print(response)
         return response
-    except crawler.TimeoutErrorWithLogs as e:
+    # except crawler.TimeoutErrorWithLogs as e:
+    except crawler2.TimeoutErrorWithLogs as e:
         app.logger.error(f"Error occurred: {e}")
         return jsonify({'error': str(e), 'logs': e.logs, 'time': e.time, 'discovered': e.discovered}), 500
     except Exception as e:
