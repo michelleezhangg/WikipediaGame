@@ -1,6 +1,11 @@
 # WikipediaGame
 
 ## Project Description
+This project is an extension of a project started by [Alexander Kurz](https://github.com/alexhkurz) of the Wikipedia link searching game with the source code being https://github.com/alexhkurz/WikipediaGame.git.
+
+The original project utilizes a breadth-first search (BFS) algorithm that extracts the current Wikipedia page's links, stores them in a queue, and then traverses through the links in the queue to find the finishing page. This algorithm, while it is widely used to find the shortest path, can be improved.
+
+My improved implementation is using an **A\* Search Algorithm** that uses a priority queue sorted based on a heuristic determined through keyword extractions and semantic similarities of the links. To gather more information, there is a preprocessing stage of extracting the meaningful words and phrases from the starting and finishing pages to determine the heuristic value for each page.
 
 ## Installation
 
@@ -9,7 +14,7 @@
 Prerequisites: Python
 
 ```
-git clone https://github.com/alexhkurz/WikipediaGame.git
+git clone https://github.com/michelleezhangg/WikipediaGame.git
 cd WikipediaGame/server
 source setup.sh
 ```
