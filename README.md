@@ -43,10 +43,3 @@ The testing for this project involves incrementally writing lines of code and th
 
 - `RATELIMIT` in `server.py`.
 - `TIMEOUT` in `crawler.py`.
-
-## Further Ideas
-
-- Improve the efficiency of the search.
-- Add heuristics for faster search.
-- Use LLMs to make better guesses, resulting in faster search.
-- ...
