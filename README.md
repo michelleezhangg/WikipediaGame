@@ -28,6 +28,7 @@ python server.py
 Play the game on [`localhost:5000`](http://127.0.0.1:5000/) (this link will only work after you started the server on your machine (watch the console in case the port number changed to eg `5001`)).
 
 ## Testing
+The testing for this project involves incrementally writing lines of code and then running it to test it. So far, the overall structure and layout of the code is written, but the heuristic has not been implemented. This is likely going to be finished or at least improved on in the next few days which then, I will update the README with the appropriate testing I conducted. As of now, the testing is very straightforward and simple.
 
 ## Limitations
 
