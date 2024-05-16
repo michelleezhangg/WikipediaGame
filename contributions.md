@@ -6,7 +6,7 @@ In preparation for this project, the file `WGIP.md` outlines the entire improvem
 ## Project Implementation
 The actual implementation of the project was very tricky. The preparation part were just thoughts, but the hands-on implementing was difficult because of unanticipated issues and time-consuming bugs.
 
-With all of this being said, the implementation of the project, briefly speaking, is an **A\* Search Algorithm** which uses a priorit queue that sorts the links based on a heuristic function determined by comparing the keywords from the current link to the final link from extracting the texts of the pages and finding the cosine similarity between them. The highest cosine similarity would sit at the top of the priority queue after adding all of the links of the current page which is a more efficient way to look through the links as opposed to the breadth-first search (BFS) algorithm of the original source code.
+With all of this being said, the implementation of the project, briefly speaking, is an **A\* Search Algorithm** which uses a priority queue that sorts the links based on a heuristic function determined by comparing the keywords from the current link to the final link from extracting the texts of the pages and finding the cosine similarity between them. The highest cosine similarity would sit at the top of the priority queue after adding all of the links of the current page which is a more efficient way to look through the links as opposed to the breadth-first search (BFS) algorithm of the original source code.
 
 ### `crawler2.py`
 I started implementing this with a general A* algorithm. The priority queue stores the heuristic value or cost starting with the starting page set to 0.0. This main function lies in the `find_path()` function. The other helper functions and classes are the following:
@@ -36,11 +36,11 @@ The documentation for this project includes `WGIP.md` detailing the project prep
 Documentation is an important part of software development and serves as a trusted source to explain the code and thought-process behind its implementation. Therefore, I have found it very important to make sure all of these documents are as detailed as possible.
 
 ## Reflections
-This project has taught me the process of improving an existing implemention. Before getting to the coding part, it is extremely vital to plan out the code and set milestones for oneself.
+This project has taught me the process of improving an existing implementation. Before getting to the coding part, it is extremely vital to plan out the code and set milestones for oneself.
 
 Certainly, there are things out of my control such as losing the initial progress and needing to get a new computer which set me back many weeks. Additionally, with my weak immune system, I got the flu a few days before finals week which also set me back. But, with all of these troubles, I still managed to implement as many changes that I could.
 
-This taught me to communicate effectively and to perservere through the hardships and do the best I can. Although, my algorithm is not the most effective and I would have loved to have more time to implement the things I wanted to, it works with simple Wikipedia pages and I am able to document my progress along with future work and limitations. This goes back to the communication skill as well. It is important to communicate what has been going on with me along with things I wish I could have done given more time.
+This taught me to communicate effectively and to persevere through the hardships and do the best I can. Although, my algorithm is not the most effective and I would have loved to have more time to implement the things I wanted to, it works with simple Wikipedia pages and I am able to document my progress along with future work and limitations. This goes back to the communication skill as well. It is important to communicate what has been going on with me along with things I wish I could have done given more time.
 
 ## Contributions
 This project was done by myself without contributions from other students. I did references the original BFS source code and used Aider and ChatGPT to aid me with debugging and general installation and coding difficulties.
